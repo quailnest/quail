@@ -1,13 +1,98 @@
 ---
-require:
-- rt_rubocop_defaults
+# somewhat based on https://raw.githubusercontent.com/runtastic/rt_rubocop_defaults/6ff1cd1e/config/default.yml
 
 AllCops:
-  TargetRubyVersion: 2.5
+  DisplayCopNames: true
+  CacheRootDirectory: '.git'
   Exclude:
+  - 'coverage/**/*'
   - 'node_modules/**/*'
   - 'vendor/**/*'
+  TargetRubyVersion: 2.5
+
+### Lint
+
+Lint/NestedMethodDefinition:
+  Exclude: []
+
+### Metrics
+
+Metrics/LineLength:
+  Max: 119
+  Exclude:
+    - Guardfile
+    - Gemfile
+
+Metrics/MethodLength:
+  Enabled: true
+  CountComments: false # count full line comments?
+  Max: 10
+  Severity: refactor
+  Exclude: []
+
+Metrics/AbcSize:
+  Exclude: []
+
+Metrics/BlockLength:
+  Exclude:
+    - '*.gemspec'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+### Layout
+
+Layout/ExtraSpacing:
+  Enabled: false
+
+Layout/AlignHash:
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
+
+Layout/MultilineOperationIndentation:
+  Description: Checks indentation of binary operations that span more than one line.
+  EnforcedStyle: indented
+
+### Style
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/NumericLiterals:
+  Description: Add underscores to large numeric literals to improve their readability.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscores-in-numerics
+  Enabled: false
 
 Style/MixinUsage:
   Exclude:
   - 'bin/*'
+
+### Specs
+
+Metrics/ClassLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/ModuleLength:
+  Exclude:
+    - spec/requests/**/*

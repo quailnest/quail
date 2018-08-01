@@ -149,8 +149,6 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
-    rt_rubocop_defaults (1.0.0)
-      rubocop (~> 0.46)
     rubocop (0.58.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -218,7 +216,6 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.0)
   rspec-rails (~> 3.7)
-  rt_rubocop_defaults (~> 1.0)
   rubocop (~> 0.58)
   sass-rails (~> 5.0)
   spring
