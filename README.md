@@ -1,5 +1,7 @@
 # Quail
 
+[![Build Status](https://travis-ci.com/quailnest/quail.svg?branch=master)](https://travis-ci.com/quailnest/quail)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
