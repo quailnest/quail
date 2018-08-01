@@ -1,0 +1,40 @@
+language: ruby
+cache: bundler
+bundler_args: --without production --jobs=4
+
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+env:
+  global:
+  - PGPORT=5433
+
+before_script:
+- cp config/database.yml.travis config/database.yml
+# TODO: remove `|| true` once a db/schema.rb exists
+- bundle exec rake db:setup RAILS_ENV=test || true 
+
+env:
+  matrix:
+  - RUN=spec
+  - RUN=lint
+
+script:
+  - |
+    case $RUN in
+    spec)
+      echo "==> Running specs"
+      bundle exec rspec -fd
+      ;;
+    lint)
+      echo "==> Running RuboCop"
+      bundle exec rubocop -c ./.rubocop.yml
+      ;;
+    *)
+      echo "unknown RUN: $RUN"
+      exit 1
+      ;;
+    esac
