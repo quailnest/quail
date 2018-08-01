@@ -41,7 +41,6 @@ group :development, :test do
   gem "fuubar"
   gem "rspec-rails", "~> 3.7"
 
-  gem "rt_rubocop_defaults", "~> 1.0"
   gem "rubocop", "~> 0.58"
 end
 
